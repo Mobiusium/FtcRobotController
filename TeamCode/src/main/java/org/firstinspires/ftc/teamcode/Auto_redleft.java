@@ -77,44 +77,37 @@ public class AutoDriveByEncoder_Linear_blueright extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // Step through each leg of the path,
-        // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        //strafe right
-        //right side toward each other left away
-        encoderDrive(DRIVE_SPEED, 7,7,5.0);
-        encoderDrive(TURN_SPEED,30   , -30, 5.0); //90 deg right
-        encoderDrive(DRIVE_SPEED, 28,28,5.0);
-
-        //right strafe
-        frontRightDrive.setPower(-1);
-        rearRightDrive.setPower(1);
-        frontLeftDrive.setPower(1);
-        rearLeftDrive.setPower(-1);
-        sleep(100);
-        frontRightDrive.setPower(0);
-        rearRightDrive.setPower(0);
-        frontLeftDrive.setPower(0);
-        rearLeftDrive.setPower(0);
-
-        spinner.setPower(-0.75);
-        sleep(4000);
-        spinner.setPower(0);
-        encoderDrive(DRIVE_SPEED,-1,-1,5.0);
-
-        //left strafe
-        frontRightDrive.setPower(1);
-        rearRightDrive.setPower(-1);
-        frontLeftDrive.setPower(-1);
-        rearLeftDrive.setPower(1);
-        sleep(750);
-        frontRightDrive.setPower(0);
-        rearRightDrive.setPower(0);
-        frontLeftDrive.setPower(0);
-        rearLeftDrive.setPower(0);
+        //Movement start here
 
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
+    }
+
+    public void strafeDrive(String direction,
+                            double time){
+        if (direction.equals("right")){
+            frontRightDrive.setPower(-1);
+            rearRightDrive.setPower(1);
+            frontLeftDrive.setPower(1);
+            rearLeftDrive.setPower(-1);
+            sleep(time);
+            frontRightDrive.setPower(0);
+            rearRightDrive.setPower(0);
+            frontLeftDrive.setPower(0);
+            rearLeftDrive.setPower(0);
+        }
+        if (direction.equals("left")){
+            frontRightDrive.setPower(1);
+            rearRightDrive.setPower(-1);
+            frontLeftDrive.setPower(-1);
+            rearLeftDrive.setPower(1);
+            sleep(time);
+            frontRightDrive.setPower(0);
+            rearRightDrive.setPower(0);
+            frontLeftDrive.setPower(0);
+            rearLeftDrive.setPower(0);
+        }
     }
 
     public void encoderDrive(double speed,
