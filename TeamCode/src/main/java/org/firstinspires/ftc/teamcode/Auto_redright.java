@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-@Autonomous(name="Auto Drive By Encoder blueRight", group="Pushbot")
+@Autonomous(name="Auto redRight", group="Auto")
 //@Disabled
 public class AutoDriveByEncoder_Linear_blueright extends LinearOpMode {
 
