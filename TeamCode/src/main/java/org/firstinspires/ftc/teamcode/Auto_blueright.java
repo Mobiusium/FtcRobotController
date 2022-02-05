@@ -79,13 +79,14 @@ public class Auto_blueright extends LinearOpMode {
 
         //Movement start here
 
-        strafeDrive("left", 500); //move left to aim at the wall
-        encoderDrive(DRIVE_SPEED,20,20, 5.0);//drive forward to the wall
-        strafeDrive("right",300);//move left touching carousel
+        strafeDrive("left", 500,1); //move left to aim at the wall
+        encoderDrive(DRIVE_SPEED,25,25, 5.0);//drive forward to the wall
+        strafeDrive("right",430,0.5);//move left touching carousel
+        encoderDrive(0.5,5,5,5.0);//go to wall and press on carousel
         spinner.setPower(-1);//start spinning carousel
         sleep(5000);
         spinner.setPower(0);//stop carousel
-        strafeDrive("left", 500);//move left to park in the storage unit
+        strafeDrive("left", 600,1);//move left to park in the storage unit
 
         //done
 
@@ -94,12 +95,12 @@ public class Auto_blueright extends LinearOpMode {
         telemetry.update();
     }
     public void strafeDrive(String direction,
-                            long time){
+                            long time, double speed){
         if (direction.equals("right")){
-            frontRightDrive.setPower(-1);
-            rearRightDrive.setPower(1);
-            frontLeftDrive.setPower(1);
-            rearLeftDrive.setPower(-1);
+            frontRightDrive.setPower(-speed);
+            rearRightDrive.setPower(speed);
+            frontLeftDrive.setPower(speed);
+            rearLeftDrive.setPower(-speed);
             sleep(time);
             frontRightDrive.setPower(0);
             rearRightDrive.setPower(0);
