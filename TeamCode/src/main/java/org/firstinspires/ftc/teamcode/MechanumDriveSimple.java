@@ -124,7 +124,7 @@ public class MechanumDriveSimple extends LinearOpMode {
             rearRightDrive.setPower(y + x - rx);
 
 
-            // The left trigger on gamepad 2 raises the arm; the right trigger lowers it
+            // The right trigger on gamepad 2 raises the arm; the left trigger lowers it
             if(gamepad2.right_trigger > 0.5) {
                 armMotor.setPower(-0.5);
 
@@ -147,6 +147,7 @@ public class MechanumDriveSimple extends LinearOpMode {
                 intake.setPower(0);
             }
 
+            //carousel
             if(gamepad2.b){
                 spinner.setPower(0.75);
             }
