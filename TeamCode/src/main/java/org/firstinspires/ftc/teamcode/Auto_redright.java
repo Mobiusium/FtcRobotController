@@ -78,8 +78,19 @@ public class Auto_redright extends LinearOpMode {
         waitForStart();
 
        //Movement start here
-
-
+        strafeDrive("right", 1000);
+        armMotor.setPower(-5.0);//raise up arm
+        sleep(2000);
+        armMotor.setPower(0);//stop raising arm
+        intake.setPower(-1);//spit out box
+        sleep(3000);
+        intake.setPower(0);//stop intake
+        strafeDrive("left",500);//move left to aim barrier
+        armMotor.setPower(0.5);//raise arm down
+        sleep(2000);
+        armMotor.setPower(0);//stop raising arm
+        encoderDrive(1, -50,-50,5.0);//back all the way into warehouse
+        //done
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
