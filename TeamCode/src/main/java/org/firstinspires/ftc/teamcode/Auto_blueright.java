@@ -79,6 +79,17 @@ public class AutoDriveByEncoder_Linear_blueright extends LinearOpMode {
 
         //Movement start here
 
+        strafeDrive("left", 500); //move left to aim at the wall
+        encoderDrive(DRIVE_SPEED,20,20, 5.0);//drive forward to the wall
+        strafeDrive("right",300);//move left touching carousel
+        spinner.setPower(-1);//start spinning carousel
+        sleep(5000);
+        spinner.setPower(0);//stop carousel
+        strafeDrive("left", 500);//move left to park in the storage unit
+
+        //done
+
+
         telemetry.addData("Path", "Complete");
         telemetry.update();
     }
@@ -106,6 +117,7 @@ public class AutoDriveByEncoder_Linear_blueright extends LinearOpMode {
             frontLeftDrive.setPower(0);
             rearLeftDrive.setPower(0);
         }
+        sleep(1000);
     }
 
     public void encoderDrive(double speed,
