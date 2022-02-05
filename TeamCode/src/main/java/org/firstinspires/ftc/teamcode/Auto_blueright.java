@@ -10,11 +10,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name="Auto blueRight", group="Auto")
 //@Disabled
-public class AutoDriveByEncoder_Linear_blueright extends LinearOpMode {
+public class Auto_blueright extends LinearOpMode {
 
     /* Declare OpMode members. */
 
-    // REPLACE HardwarePushbot WITH ALL THE DECLARATIONS IN THE MECHANUM TEST DRIVE CODE
+    // Declare Mecanum Drive
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor frontLeftDrive = null;
     private DcMotor rearLeftDrive = null;
@@ -94,7 +94,7 @@ public class AutoDriveByEncoder_Linear_blueright extends LinearOpMode {
         telemetry.update();
     }
     public void strafeDrive(String direction,
-                            double time){
+                            long time){
         if (direction.equals("right")){
             frontRightDrive.setPower(-1);
             rearRightDrive.setPower(1);
