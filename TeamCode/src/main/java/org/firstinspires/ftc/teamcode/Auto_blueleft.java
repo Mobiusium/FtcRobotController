@@ -78,14 +78,14 @@ public class Auto_blueleft extends LinearOpMode {
         waitForStart();
 
         //Movement start here
-        strafeDrive("left",1000);//move left to aim Alliance tower
+        strafeDrive("left",1000,1);//move left to aim Alliance tower
         armMotor.setPower(-0.5);//raise arm up
         sleep(2000);
         armMotor.setPower(0);//stop raising arm
         intake.setPower(-1);//spit out box
         sleep(3000);
         intake.setPower(0);//stop intake
-        strafeDrive("right",500);//move right to aim barrier
+        strafeDrive("right",500,1);//move right to aim barrier
         armMotor.setPower(0.5);//raise arm down
         sleep(2000);
         armMotor.setPower(0);//stop raising arm
@@ -99,12 +99,12 @@ public class Auto_blueleft extends LinearOpMode {
     }
 
     public void strafeDrive(String direction,
-                            long time){
+                            long time, double speed){
         if (direction.equals("right")){
-            frontRightDrive.setPower(-1);
-            rearRightDrive.setPower(1);
-            frontLeftDrive.setPower(1);
-            rearLeftDrive.setPower(-1);
+            frontRightDrive.setPower(-speed);
+            rearRightDrive.setPower(speed);
+            frontLeftDrive.setPower(speed);
+            rearLeftDrive.setPower(-speed);
             sleep(time);
             frontRightDrive.setPower(0);
             rearRightDrive.setPower(0);
@@ -122,6 +122,7 @@ public class Auto_blueleft extends LinearOpMode {
             frontLeftDrive.setPower(0);
             rearLeftDrive.setPower(0);
         }
+        sleep(1000);
     }
 
     public void encoderDrive(double speed,

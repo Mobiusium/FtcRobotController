@@ -79,13 +79,13 @@ public class Auto_redleft extends LinearOpMode {
 
         //Movement start here
 
-        strafeDrive("left", 500);//move left to aim the wall with back of the robot
+        strafeDrive("left", 500,1);//move left to aim the wall with back of the robot
         encoderDrive(DRIVE_SPEED,-20,-20,5.0);//move back to the wall
-        strafeDrive("right",300);//move right touch carousel
+        strafeDrive("right",300,1);//move right touch carousel
         spinner.setPower(1);//start spinning the carousel
         sleep(5000);
         spinner.setPower(0);//stop carousel
-        strafeDrive("left",500);//move left to park
+        strafeDrive("left",500,1);//move left to park
         //done
 
         telemetry.addData("Path", "Complete");
@@ -93,12 +93,12 @@ public class Auto_redleft extends LinearOpMode {
     }
 
     public void strafeDrive(String direction,
-                            long time){
+                            long time, double speed){
         if (direction.equals("right")){
-            frontRightDrive.setPower(-1);
-            rearRightDrive.setPower(1);
-            frontLeftDrive.setPower(1);
-            rearLeftDrive.setPower(-1);
+            frontRightDrive.setPower(-speed);
+            rearRightDrive.setPower(speed);
+            frontLeftDrive.setPower(speed);
+            rearLeftDrive.setPower(-speed);
             sleep(time);
             frontRightDrive.setPower(0);
             rearRightDrive.setPower(0);
@@ -116,6 +116,7 @@ public class Auto_redleft extends LinearOpMode {
             frontLeftDrive.setPower(0);
             rearLeftDrive.setPower(0);
         }
+        sleep(1000);
     }
 
     public void encoderDrive(double speed,
