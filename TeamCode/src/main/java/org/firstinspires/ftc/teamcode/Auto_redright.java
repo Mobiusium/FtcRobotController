@@ -78,7 +78,7 @@ public class Auto_redright extends LinearOpMode {
         waitForStart();
 
        //Movement start here
-        strafeDrive("right", 1000);
+        strafeDrive("right", 1000);//move right to aim at the Alliance Tower
         armMotor.setPower(-5.0);//raise up arm
         sleep(2000);
         armMotor.setPower(0);//stop raising arm

@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 @Autonomous(name="Auto Drive By Encoder blueRight", group="Pushbot")
-//@Disabled
+@Disabled
 public class AutoDriveByEncoder_Linear_blueright extends LinearOpMode {
 
     /* Declare OpMode members. */

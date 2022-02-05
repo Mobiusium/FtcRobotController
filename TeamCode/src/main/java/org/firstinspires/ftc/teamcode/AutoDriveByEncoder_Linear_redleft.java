@@ -65,7 +65,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous(name="Auto Drive By Encoder redLeft", group="Pushbot")
-//@Disabled
+@Disabled
 public class AutoDriveByEncoder_Linear_redleft extends LinearOpMode {
 
     /* Declare OpMode members. */
