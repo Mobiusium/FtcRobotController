@@ -78,18 +78,22 @@ public class Auto_blueleft extends LinearOpMode {
         waitForStart();
 
         //Movement start here
-        strafeDrive("left",1000,1);//move left to aim Alliance tower
-        armMotor.setPower(-0.5);//raise arm up
-        sleep(2000);
+        strafeDrive("left", 1100,1);//move right to aim at the Alliance Tower
+        encoderDrive(1, -1,-1,5.0);
+        armMotor.setPower(-5.0);//raise up arm
+        sleep(600);
         armMotor.setPower(0);//stop raising arm
+        encoderDrive(DRIVE_SPEED,2,2,5.0);
         intake.setPower(-1);//spit out box
         sleep(3000);
         intake.setPower(0);//stop intake
-        strafeDrive("right",500,1);//move right to aim barrier
+        encoderDrive(DRIVE_SPEED,-2,-2,5.0);
+        strafeDrive("right",600 ,1);//move left to aim barrier
         armMotor.setPower(0.5);//raise arm down
-        sleep(2000);
+        sleep(600);
         armMotor.setPower(0);//stop raising arm
-        encoderDrive(1,-50,-50, 5.0);//back all the way up in to warehouse
+        encoderDrive(1,5,5,5.0);
+        encoderDrive(1, -90,-90,5.0);//back all the way into warehouse
         //done
 
 
