@@ -78,8 +78,14 @@ public class AutoDriveByEncoder_Linear_blueright extends LinearOpMode {
         waitForStart();
 
         //Movement start here
-
-
+        strafeDrive("left", 500);//move left to aim the wall with back of the robot
+        encoderDrive(DRIVE_SPEED,-20,-20,5.0);//move back to the wall
+        strafeDrive("right",300);//move right touch carousel
+        spinner.setPower(1);//start spinning the carousel
+        sleep(5000);
+        spinner.setPower(0);//stop carousel
+        strafeDrive("left",500);//move left to park
+        //done
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
