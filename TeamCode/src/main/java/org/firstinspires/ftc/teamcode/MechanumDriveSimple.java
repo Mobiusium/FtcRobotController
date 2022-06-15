@@ -63,7 +63,7 @@ public class MechanumDriveSimple extends LinearOpMode {
     private DcMotor spinner = null;
     private DcMotor armMotor = null;
     private CRServo intake = null;
-    private TouchSensor limitSwitch = null;
+    private TouchSensor limit = null;
 
     @Override
     public void runOpMode() {
@@ -159,10 +159,10 @@ public class MechanumDriveSimple extends LinearOpMode {
 
             //carousel
             if(gamepad2.b){
-                spinner.setPower(0.75);
+                spinner.setPower(1);
             }
             if(gamepad2.x){
-                spinner.setPower(-0.75);
+                spinner.setPower(-1);
             }
             else {
                 spinner.setPower(0);
