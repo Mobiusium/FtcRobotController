@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
@@ -62,6 +63,7 @@ public class MechanumDriveSimple extends LinearOpMode {
     private DcMotor spinner = null;
     private DcMotor armMotor = null;
     private CRServo intake = null;
+    private TouchSensor limitSwitch = null;
 
     @Override
     public void runOpMode() {
@@ -85,6 +87,9 @@ public class MechanumDriveSimple extends LinearOpMode {
         rearLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
         rearRightDrive.setDirection(DcMotor.Direction.FORWARD);
+
+        TouchSensor limit = hardwareMap.get(TouchSensor.class, "limit");
+       // DcMotor motor = hardwareMap.get(DcMotor.class, "Motor");
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -127,12 +132,17 @@ public class MechanumDriveSimple extends LinearOpMode {
             // The right trigger on gamepad 2 raises the arm; the left trigger lowers it
             if(gamepad2.right_trigger > 0.5) {
                 armMotor.setPower(-0.5);
-
-            } else if (gamepad2.left_trigger>0.5){
-                armMotor.setPower(0.5);
             }
-             else {
-                   armMotor.setPower(0) ;
+            else if(gamepad2.left_trigger > 0.5){
+                if (!limit.isPressed()){
+                    armMotor.setPower(0.5);
+                }
+                else if(limit.isPressed()){
+                    armMotor.setPower(0);
+                }
+            }
+            else {
+                   armMotor.setPower(0);
             }
 
 
@@ -163,6 +173,8 @@ public class MechanumDriveSimple extends LinearOpMode {
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
+            //
+            telemetry.addData("Arm Motor Power:", armMotor.getPower());
             //telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower1, rightPower);
             telemetry.update();
         }

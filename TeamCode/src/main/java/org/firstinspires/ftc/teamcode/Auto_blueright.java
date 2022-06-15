@@ -81,8 +81,8 @@ public class Auto_blueright extends LinearOpMode {
 
         strafeDrive("left", 500,1); //move left to aim at the wall
         encoderDrive(DRIVE_SPEED,25,25, 5.0);//drive forward to the wall
-        strafeDrive("right",430,0.5);//move left touching carousel
-        encoderDrive(0.5,5,5,5.0);//go to wall and press on carousel
+        strafeDrive("right",430,0.8);//move left touching carousel
+        encoderDrive(0.4,4,4,5.0);//go to wall and press on carousel
         spinner.setPower(-1);//start spinning carousel
         sleep(5000);
         spinner.setPower(0);//stop carousel

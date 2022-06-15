@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 @Autonomous(name="Auto redLeft", group="Auto")
-//@Disabled
+@Disabled
 public class Auto_redleft extends LinearOpMode {
 
     /* Declare OpMode members. */
@@ -78,14 +78,14 @@ public class Auto_redleft extends LinearOpMode {
         waitForStart();
 
         //Movement start here
-
-        strafeDrive("left", 500,1);//move left to aim the wall with back of the robot
-        encoderDrive(DRIVE_SPEED,-20,-20,5.0);//move back to the wall
-        strafeDrive("right",300,1);//move right touch carousel
-        spinner.setPower(1);//start spinning the carousel
+        strafeDrive("right",2000,0.8);
+        encoderDrive(0.5,2,2,5.0);
+        spinner.setPower(0.75);
         sleep(5000);
-        spinner.setPower(0);//stop carousel
-        strafeDrive("left",500,1);//move left to park
+        spinner.setPower(0);
+        encoderDrive(1,-10,-10,5.0);
+        strafeDrive("right", 500,1);
+
         //done
 
         telemetry.addData("Path", "Complete");
